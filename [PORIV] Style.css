@@ -1,0 +1,1347 @@
+/* === СТИЛІ ДЛЯ КАРТОЧОК ПОРІВНЯННЯ (унікальні класи .poriv-*) === */
+
+/* Приховуємо великі SVG в зоні порівняння */
+.comparison-fs-main-wrapper>svg {
+  display: none !important;
+}
+
+/* ====== ОСНОВНИЙ КОНТЕЙНЕР КАРТОЧКИ ====== */
+.poriv-card {
+  border-radius: 0.347222em;
+  flex: none;
+  width: 24em;
+  max-width: 18em;
+  scroll-snap-align: start;
+  position: relative;
+  transform: none !important;
+}
+
+/* ====== ОБГОРТКА КАРТОЧКИ (посилання) ====== */
+.poriv-card .poriv-card-link {
+  z-index: 0;
+  grid-row-gap: 1.04167em;
+  cursor: pointer;
+  border: 0.0694445em solid rgba(119, 119, 119, 0.25);
+  border-radius: 0.347222em;
+  flex-flow: column;
+  align-items: stretch;
+  /*height: 31em;*/
+  padding-bottom: 1.04167em;
+  text-decoration: none;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  color: inherit;
+}
+
+.poriv-card .poriv-card-link:hover {
+  box-shadow: 0 0 5px #00000021;
+}
+
+/* ====== КОНТЕЙНЕР ЗОБРАЖЕННЯ ====== */
+.poriv-card .poriv-img-wrap {
+  aspect-ratio: 1;
+  object-fit: cover;
+  background-position: 0 0;
+  background-size: auto;
+  height: auto;
+  position: relative;
+}
+
+.poriv-card .poriv-embed {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* ====== ЗОБРАЖЕННЯ ТОВАРУ ====== */
+.poriv-card .product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  background: transparent;
+}
+
+.poriv-card .product-image.is-second {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.poriv-card .poriv-card-link:hover .product-image.is-second {
+  opacity: 1;
+}
+
+/* ====== СТАТУСИ НАЯВНОСТІ ====== */
+.poriv-card .poriv-no-photo {
+  z-index: 11;
+  opacity: 0.5;
+  background-color: #fff;
+  position: absolute;
+  inset: 0%;
+}
+
+.poriv-card .poriv-wait-status {
+  opacity: 1;
+  text-align: center;
+  background-color: #8d8d8d;
+  color: #fff;
+  width: 12em;
+  height: 2em;
+  line-height: 100%;
+  position: absolute;
+  inset: auto auto 0 0%;
+  z-index: 12;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9em;
+  font-weight: 400;
+  display: flex;
+}
+
+/* ====== КОНТЕЙНЕР ІНФОРМАЦІЇ ====== */
+.poriv-card .poriv-info-wrap {
+  flex-flow: column;
+  margin-left: 1.04167em;
+  margin-right: 1.04167em;
+  display: flex;
+}
+
+/* ====== ВЕРХНЯ ЧАСТИНА ІНФОРМАЦІЇ ====== */
+.poriv-card .poriv-top-wrap {
+  grid-column-gap: 0.4em;
+  grid-row-gap: 0.4em;
+  flex-flow: column;
+  min-height: 2em;
+  display: flex;
+}
+
+.poriv-card .poriv-title-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ====== НАЗВА ТОВАРУ ====== */
+.poriv-card .poriv-title {
+  font-size: 0.9em;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #333;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.poriv-card .poriv-id {
+  display: none !important;
+}
+
+/* ====== РЕЙТИНГ ====== */
+.poriv-card .poriv-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.poriv-card .poriv-stars {
+  display: flex;
+  align-items: center;
+  gap: 0.25em;
+}
+
+.poriv-card .poriv-stars-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.15em;
+}
+
+.poriv-card .poriv-star-icon {
+  width: 1em;
+  height: 1em;
+}
+
+.poriv-card .poriv-rate-block {
+  display: flex;
+  align-items: center;
+}
+
+.poriv-card .poriv-rate-text {
+  font-size: 0.8em;
+  font-weight: 600;
+  color: #333;
+}
+
+.poriv-card .poriv-reviews {
+  display: flex;
+  align-items: center;
+  gap: 0.15em;
+}
+
+.poriv-card .poriv-review-icon {
+  width: 0.9em;
+  height: 0.9em;
+}
+
+.poriv-card .poriv-review-text {
+  font-size: 0.8em;
+  color: #666;
+}
+
+/* ====== НИЖНЯ ЧАСТИНА КАРТОЧКИ ====== */
+.poriv-card .poriv-bot-wrap {
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: auto;
+  margin-left: 1.04167em;
+  margin-right: 1.04167em;
+  display: flex;
+}
+
+.poriv-card .poriv-cart {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+}
+
+/* ====== ЦІНИ ====== */
+.poriv-card .poriv-price-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+}
+
+.poriv-card .poriv-price-sale {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  flex-wrap: wrap;
+}
+
+/* Стара ціна */
+.poriv-card .t-text.sale {
+  font-size: 0.85em;
+  color: #999;
+  text-decoration: line-through;
+  font-weight: 400;
+}
+
+/* Контейнер знижки */
+.poriv-card .leader-card-discount-wrapper {
+  display: inline-flex;
+}
+
+.poriv-card .leader-card-discount-wrapper.no_availible_discount {
+  display: none;
+}
+
+.poriv-card .leader-card-discount-wrapper .xxs-text {
+  font-size: 0.75em;
+  font-weight: 700;
+  color: white;
+  background: #dc3545;
+  padding: 0.25em 0.5em;
+  border-radius: 0.25em;
+  line-height: 1;
+}
+
+/* Нова ціна */
+.poriv-card .poriv-new-price {
+  font-size: 1.1em;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.poriv-card .poriv-new-price-na {
+  font-size: 1.1em;
+  font-weight: 700;
+  color: #999;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* ====== ТЕГ КАРТОЧКИ ====== */
+.poriv-card .poriv-tag {
+  z-index: 11;
+  background-color: #dc3545;
+  border-radius: 0.347222em;
+  justify-content: center;
+  align-items: center;
+  height: 2em;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+  display: flex;
+  position: absolute;
+  inset: 1em 1em auto auto;
+}
+
+/* ====== КНОПКА ПЕРЕХОДУ (стрілка) ====== */
+.poriv-card .poriv-arrow-btn {
+  position: absolute;
+  bottom: 1.25em;
+  right: 1.25em;
+  z-index: 2;
+  text-decoration: none;
+}
+
+.poriv-card .poriv-arrow-icon {
+  width: 2em;
+  height: 2em;
+  background-image: url("https://cdn.prod.website-files.com/6511ef558d67afe353cac882/68a30849b50267d026de02d9_arrow-up-right-svgrepo-com.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 3em;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.poriv-card .poriv-arrow-icon:hover {
+  transform: scale(1.1);
+}
+
+/* ====== КНОПКА ВИДАЛЕННЯ З ПОРІВНЯННЯ ====== */
+.poriv-card .poriv-saved-wrapper {
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+  z-index: 15;
+}
+
+.poriv-card .poriv-remove-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5em;
+  height: 2.5em;
+  background: white;
+  border-radius: 0.25em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.poriv-card .poriv-remove-btn:hover {
+  background: #f8f9fa;
+  border-color: #dc3545;
+  box-shadow: 0 2px 8px rgba(220, 53, 69, 0.2);
+}
+
+.poriv-card .poriv-remove-icon {
+  width: 1em;
+  height: 1em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.poriv-card .poriv-remove-icon:hover {
+  transform: scale(1.1);
+}
+
+/* ====== АКТИВНИЙ СТАН КАРТОЧКИ ====== */
+
+.poriv-card.active .poriv-card-link {
+  border-color: #dc3545;
+}
+
+/* ====== ПРИХОВАНІ ЕЛЕМЕНТИ ====== */
+.poriv-card .w-condition-invisible {
+  display: none !important;
+}
+
+/* === КІНЕЦЬ СТИЛІВ КАРТОЧОК ПОРІВНЯННЯ === */
+
+/* === СТИЛІ ДЛЯ ТАБЛИЦІ ПОРІВНЯННЯ === */
+
+/* Основний контейнер таблиці */
+.comparison-table-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Заголовок таблиці */
+.comparison-table-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.comparison-table-header h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+}
+
+/* Контент таблиці */
+.comparison-table-content {
+  width: 100%;
+}
+
+/* Контейнер характеристик */
+.comparison-table-characteristics {
+  display: grid;
+  grid-template-columns: 200px repeat(auto-fit, minmax(200px, 1fr));
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Контейнер назв характеристик */
+.comparsion_Table_Key_wrapper {
+  display: flex;
+  flex-direction: column;
+  background: #f8f9fa;
+  border-right: 1px solid #e5e7eb;
+}
+
+/* Клітинки з назвами характеристик */
+.comparsion_table_name_cell {
+  padding: 12px 15px;
+  border-bottom: 1px solid #e5e7eb;
+  font-weight: 500;
+  color: #495057;
+  background: #f8f9fa;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  line-height: 1.4;
+  min-height: 48px;
+}
+
+/* Заголовок "Характеристики" - буде синхронізований по висоті через JS */
+.comparsion_table_name_cell.characteristics-header {
+  font-weight: 600;
+  background: #e9ecef;
+  color: #495057;
+  border-bottom: 2px solid #dee2e6;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 15px;
+  min-height: auto;
+}
+
+.comparsion_table_name_cell:last-child {
+  border-bottom: none;
+}
+
+/* Повідомлення про відсутність активних товарів */
+.no-active-products {
+  padding: 20px;
+  text-align: center;
+  color: #6b7280;
+  font-style: italic;
+  background: #f9fafb;
+}
+
+/* Сітка значень характеристик */
+.comparison-values-grid {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+}
+
+/* Контейнер значень товару */
+.comparison-product-values {
+  min-width: 200px;
+  border-right: 1px solid #e5e7eb;
+}
+
+.comparison-product-values:last-child {
+  border-right: none;
+}
+
+/* Контейнер значень характеристик */
+.comparsion_table_key_wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Клітинки зі значеннями характеристик */
+.comparsion_table_key_cell {
+  padding: 12px 15px;
+  border-bottom: 1px solid #e5e7eb;
+  color: #333;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  line-height: 1.4;
+  text-align: center;
+  min-height: 48px;
+  width: 100%;
+}
+
+/* Назви товарів (перший рядок) - буде синхронізований по висоті через JS */
+.comparsion_table_key_cell.product-title {
+  font-weight: 600;
+  background: #e9ecef;
+  color: #495057;
+  border-bottom: 2px solid #dee2e6;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  min-height: auto;
+}
+
+.comparsion_table_key_cell:last-child {
+  border-bottom: none;
+}
+
+/* Стилі для відсутніх значень */
+.comparsion_table_key_cell.missing-value {
+  color: #9ca3af;
+  font-style: italic;
+  background: #f9fafb;
+}
+
+/* === СТИЛІ ДЛЯ КОНТЕЙНЕРА ПОРІВНЯННЯ (SWIPER) === */
+
+.comparison-fs-main-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 0;
+  background: transparent;
+  min-height: 200px;
+}
+
+/* Swiper слайд */
+.swiper-slide {
+  width: auto !important;
+  flex-shrink: 0;
+}
+
+/* Повідомлення про відсутність товарів */
+.no-products {
+  text-align: center;
+  color: #666;
+  font-size: 16px;
+  padding: 40px 20px;
+  background: white;
+  margin: auto;
+  border-radius: 8px;
+  border: 2px dashed #ddd;
+  width: 100%;
+}
+
+.error-message {
+  text-align: center;
+  color: #e74c3c;
+  font-size: 16px;
+  padding: 40px 20px;
+  background: #f8d7da;
+  border-radius: 8px;
+  border: 1px solid #f5c6cb;
+  width: 100%;
+}
+
+/* === АДАПТИВНІСТЬ ДЛЯ КАРТОЧОК ПОРІВНЯННЯ (.poriv-card) === */
+
+/* Десктоп - 4-5 карточок в ряд */
+@media (min-width: 1200px) {
+  /*.poriv-card {
+    width: 280px;
+    flex: 0 0 280px;
+    max-width: 280px;
+  }*/
+}
+
+/* Планшет - 3 карточки в ряд */
+@media (max-width: 1199px) and (min-width: 768px) {
+  /*.poriv-card {
+    width: 260px;
+    flex: 0 0 260px;
+    max-width: 260px;
+  }*/
+}
+
+/* Мобільний - 2.3 карточки (2 повні + частина третьої) */
+@media (max-width: 767px) {
+  /*.poriv-card {
+    width: calc(45vw - 8px);
+    flex: 0 0 calc(45vw - 8px);
+    min-width: 160px;
+    max-width: 200px;
+  }*/
+
+  .poriv-card .product-image.is-second {
+    max-height: 120px;
+  }
+
+  .poriv-card .poriv-title {
+    font-size: 0.75em;
+    line-height: 1.3;
+  }
+
+  .poriv-card .poriv-new-price,
+  .poriv-card .poriv-new-price-na {
+    font-size: 1.3em;
+  }
+
+  .poriv-card .t-text.sale {
+    font-size: 1.3em;
+    line-height: 1em;
+  }
+
+  .poriv-card .leader-card-discount-wrapper .xxs-text {
+    font-size: 1em;
+    padding: 2px 6px;
+  }
+
+  .poriv-card .poriv-arrow-icon {
+    width: 1.5em;
+    height: 1.5em;
+    background-size: 0.75em;
+  }
+
+  .poriv-card .poriv-saved-wrapper {
+    top: 0.3em;
+    right: 0.3em;
+  }
+
+  .poriv-card .poriv-remove-btn {
+    width: 1.2em;
+    height: 1.2em;
+  }
+}
+
+/* Дуже маленькі екрани */
+@media (max-width: 480px) {
+  .poriv-card .leader-card-discount-wrapper .xxs-text {
+    font-size: 3em;
+  }
+
+  .poriv-card .t-text.sale {
+    font-size: 3em;
+  }
+
+  .poriv-card .poriv-remove-icon {
+    width: 70% !important;
+    height: 70% !important;
+  }
+
+  .poriv-card .poriv-remove-btn {
+    width: 8em !important;
+    height: 8em !important;
+  }
+
+  .poriv-card {
+    width: calc(50vw - 20px);
+    flex: 0 0 calc(50vw - 20px);
+    min-width: 150px;
+
+    max-width: 180px;
+  }
+
+  .poriv-card .poriv-card-link {
+    height: 80em;
+    border-radius: 2.66667em;
+  }
+
+  .no-active-products {
+    font-size: 3em;
+    line-height: 1.2em;
+
+  }
+
+  .comparison-fs-main-wrapper {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .poriv-card .poriv-img-wrap {
+    min-height: 120px;
+    padding: 8px;
+  }
+
+  .poriv-card .product-image.is-second {
+    max-height: 100px;
+  }
+
+  .poriv-card .poriv-title {
+    font-size: 4em;
+  }
+
+  .poriv-card .poriv-new-price,
+  .poriv-card .poriv-new-price-na {
+    font-size: 4em;
+  }
+
+  .poriv-card .poriv-arrow-icon {
+    width: 1.5em;
+    height: 1.5em;
+    background-size: 0.75em;
+  }
+}
+
+.comparsion_table_name_cell:not(.characteristics-header) {
+  font-weight: 600;
+  line-height: 1.2em;
+}
+
+/* Адаптивність */
+@media (max-width: 768px) {
+  .comparison-table-characteristics {
+    grid-template-columns: 150px repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  .comparison-table-wrapper {
+    padding: 15px;
+  }
+
+  .comparison-product-values {
+    min-width: 150px;
+  }
+
+  .comparsion_table_name_cell,
+  .comparsion_table_key_cell {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .comparsion_table_key_cell:not(.product-title) {
+    min-height: 40px;
+  }
+
+  .comparsion_table_name_cell:not(.characteristics-header) {
+    min-height: 40px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .comparison-table-characteristics {
+    grid-template-columns: 120px repeat(auto-fit, minmax(120px, 1fr));
+  }
+
+  .comparison-table-wrapper {
+    padding: 10px;
+  }
+
+  .comparison-product-values {
+    min-width: 120px;
+  }
+
+  .mobile-cart {
+    flex-direction: column;
+  }
+
+  .comparsion_table_name_cell,
+  .comparsion_table_key_cell {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  .comparsion_table_key_cell:not(.product-title) {
+    min-height: 36px;
+  }
+
+  .comparsion_table_name_cell:not(.characteristics-header) {
+    min-height: 36px;
+  }
+}
+
+/* === СТИЛІ ДЛЯ ПРЕЛОАДЕРА === */
+
+/* Прелоадер таблиці - на всю ширину екрану */
+.poriv-table-preloader {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 16px;
+  margin: 40px 0;
+  min-height: 300px;
+  width: 100%;
+  max-width: none;
+  opacity: 1;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  transform: translateY(0);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid #dee2e6;
+}
+
+/* Спінер прелоадера */
+.preloader-spinner {
+  width: 60px !important;
+  height: 60px !important;
+  border: 5px solid #e9ecef !important;
+  border-top: 5px solid #007cba !important;
+  border-radius: 50% !important;
+  animation: poriv-spin 1s linear infinite !important;
+  margin-bottom: 30px !important;
+}
+
+/* Текст прелоадера */
+.preloader-text {
+  color: #495057 !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  margin-bottom: 12px !important;
+  text-align: center !important;
+  letter-spacing: 0.5px;
+}
+
+/* Підтекст прелоадера */
+.preloader-subtext {
+  color: #6c757d !important;
+  font-size: 15px !important;
+  text-align: center !important;
+  font-weight: 400;
+}
+
+/* Анімації */
+@keyframes poriv-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.poriv-table-fade-out {
+  opacity: 0 !important;
+  transform: translateY(-30px) !important;
+}
+
+.poriv-table-fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: poriv-fade-in 0.7s ease-out forwards;
+}
+
+@keyframes poriv-fade-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.poriv-table-content {
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+/* Контейнер таблиці під час завантаження */
+.comparison-main-wrapper:has(.poriv-table-preloader) {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+/* Адаптивність для прелоадера */
+@media (max-width: 768px) {
+  .poriv-table-preloader {
+    padding: 60px 15px;
+    margin: 30px 0;
+    min-height: 250px;
+    border-radius: 12px;
+  }
+
+  .preloader-spinner {
+    width: 50px !important;
+    height: 50px !important;
+    border-width: 4px !important;
+    margin-bottom: 25px !important;
+  }
+
+  .preloader-text {
+    font-size: 16px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .preloader-subtext {
+    font-size: 14px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .poriv-table-preloader {
+    padding: 50px 10px;
+    margin: 20px 0;
+    min-height: 200px;
+    border-radius: 8px;
+  }
+
+  .preloader-spinner {
+    width: 40px !important;
+    height: 40px !important;
+    border-width: 3px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .preloader-text {
+    font-size: 15px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .preloader-subtext {
+    font-size: 13px !important;
+  }
+}
+
+/* === ДОДАТКОВІ СТИЛІ КОМПОНЕНТІВ === */
+
+/* Loading indicator (загальний індикатор завантаження) */
+.poriv-loading-indicator {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px 30px;
+  border-radius: 8px;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Спінер для loading indicator */
+.poriv-loading-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #fff;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: poriv-spin 1s linear infinite;
+}
+
+/* Контейнер помилки завантаження */
+.poriv-error-container {
+  text-align: center;
+  padding: 40px 20px;
+  color: #dc3545;
+  background: #f8d7da;
+  border-radius: 8px;
+  margin: 20px 0;
+  border: 1px solid #f5c6cb;
+}
+
+.poriv-error-title {
+  font-size: 18px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.poriv-error-message {
+  font-size: 14px;
+  color: #721c24;
+  font-weight: 400;
+}
+
+/* Стилі для ручної таблиці порівняння */
+.poriv-manual-table-container {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.poriv-manual-table-title {
+  margin: 0 0 20px 0;
+  font-size: 20px;
+  color: #333;
+  font-weight: 600;
+  text-align: center;
+}
+
+.poriv-manual-product-item {
+  padding: 15px;
+  margin: 10px 0;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  background: #f9f9f9;
+  transition: background-color 0.2s ease;
+}
+
+.poriv-manual-product-item:hover {
+  background: #f0f0f0;
+}
+
+.poriv-manual-product-price {
+  color: #007cba;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* Кнопка видалення з порівняння */
+.poriv-remove-button {
+  display: flex !important;
+  width: 16px !important;
+  height: 16px !important;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Примусово показуємо кнопку видалення */
+[data-poriv-unsave] {
+  display: flex !important;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 1.5em !important;
+  height: 1.5em !important;
+}
+
+[data-poriv-unsave]:hover {
+  transform: scale(1.1);
+}
+
+/* Позиціонування кнопки в правому верхньому куті */
+.saved_item_wrapper.absolute_wrapper {
+  position: absolute !important;
+  top: 8px !important;
+  right: 8px !important;
+  z-index: 10 !important;
+}
+
+.fs-prod-buy-add-button-wrapper {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 2.5em !important;
+  height: 2.5em !important;
+  background: white !important;
+  border-radius: 4px !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid #e0e0e0 !important;
+}
+
+.fs-prod-buy-add-button-wrapper:hover {
+  background: #f8f9fa !important;
+  border-color: #dc3545 !important;
+  box-shadow: 0 2px 8px rgba(220, 53, 69, 0.2) !important;
+}
+
+/* Адаптивність для кнопки видалення */
+@media (max-width: 768px) {
+
+  .poriv-remove-button,
+  [data-poriv-unsave] {
+    width: 14px !important;
+    height: 14px !important;
+  }
+
+  .fs-prod-buy-add-button-wrapper {
+    width: 20px !important;
+    height: 20px !important;
+    border-radius: 0.25em !important;
+  }
+
+  .saved_item_wrapper.absolute_wrapper {
+    top: 6px !important;
+    right: 6px !important;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .poriv-remove-button,
+  [data-poriv-unsave] {
+    width: 12px !important;
+    height: 12px !important;
+  }
+
+  .fs-prod-buy-add-button-wrapper {
+    width: 18px !important;
+    height: 18px !important;
+    border-radius: 1.25em !important;
+  }
+
+  .saved_item_wrapper.absolute_wrapper {
+    top: 4px !important;
+    right: 4px !important;
+  }
+}
+
+/* === УНІВЕРСАЛЬНА СИНХРОНІЗАЦІЯ ВИСОТИ === */
+
+/* Базовий клас для синхронізації висоти */
+.poriv-sync-height {
+  transition: height 0.2s ease;
+}
+
+/* Рядки таблиці для синхронізації */
+.poriv-table-row {
+  display: contents;
+}
+
+/* Комірки в рядку для синхронізації */
+.poriv-sync-row-height {
+  transition: height 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Спеціальні класи для різних типів комірок */
+.poriv-sync-row-height.characteristic-name {
+  justify-content: flex-start;
+  text-align: left;
+  padding-left: 15px;
+}
+
+.poriv-sync-row-height.characteristic-value {
+  text-align: center;
+}
+
+.poriv-sync-row-height.product-title {
+  font-weight: 600;
+  background: #e9ecef;
+  color: #495057;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.poriv-sync-row-height.characteristics-header {
+  font-weight: 600;
+  background: #e9ecef;
+  color: #495057;
+  border-bottom: 2px solid #dee2e6;
+  justify-content: center;
+}
+
+/* Прибираємо hover ефект для зображень товарів в порівнянні */
+.product-image.is-second:hover {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* === ЦІНОВИЙ БЛОК В ТАБЛИЦІ ПОРІВНЯННЯ === */
+
+/* Контейнер цінового блоку */
+.poriv-price-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 8px 4px;
+  background: transparent;
+  height: 100%;
+  min-height: 48px;
+}
+
+/* Поточна ціна */
+.poriv-current-price {
+  font-size: 16px;
+  font-weight: 700;
+  color: #007cba;
+  line-height: 1.1;
+  text-align: center;
+  margin: 0;
+}
+
+/* Контейнер старої ціни та знижки */
+.poriv-price-details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin: 0;
+}
+
+/* Стара ціна */
+.poriv-old-price {
+  font-size: 12px;
+  color: #6c757d;
+  text-decoration: line-through;
+  font-weight: 400;
+  line-height: 1;
+}
+
+/* Знижка */
+.poriv-discount-badge {
+  background: #dc3545;
+  color: white;
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+/* Якщо немає старої ціни або знижки - тільки колір */
+.poriv-price-block.no-discount .poriv-current-price {
+  color: #007cba;
+}
+
+/* Комірка з ціною в таблиці */
+.comparsion_table_key_cell.price-cell {
+  padding: 12px 15px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+}
+
+/* Адаптивність для цінового блоку */
+@media (max-width: 768px) {
+  .poriv-price-block {
+    padding: 6px 4px;
+    gap: 3px;
+    min-height: 40px;
+  }
+
+  .poriv-current-price {
+    font-size: 14px;
+  }
+
+  .poriv-old-price {
+    font-size: 11px;
+  }
+
+  .poriv-discount-badge {
+    font-size: 9px;
+    padding: 1px 3px;
+  }
+
+  .comparsion_table_key_cell.price-cell {
+    padding: 10px 12px;
+    min-height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .poriv-price-block {
+    padding: 4px 2px;
+    gap: 2px;
+    min-height: 36px;
+  }
+
+  .poriv-current-price {
+    font-size: 13px;
+  }
+
+  .poriv-old-price {
+    font-size: 10px;
+  }
+
+  .poriv-discount-badge {
+    font-size: 8px;
+    padding: 1px 3px;
+  }
+
+  .poriv-price-details {
+    gap: 4px;
+  }
+
+  .comparsion_table_key_cell.price-cell {
+    padding: 8px 10px;
+    min-height: 36px;
+  }
+}
+
+/* Адаптивність для додаткових компонентів */
+@media (max-width: 768px) {
+  .poriv-loading-indicator {
+    padding: 15px 20px;
+    font-size: 14px;
+    gap: 10px;
+  }
+
+  .poriv-loading-spinner {
+    width: 16px;
+    height: 16px;
+  }
+
+  .poriv-error-container {
+    padding: 30px 15px;
+    margin: 15px 0;
+  }
+
+  .poriv-error-title {
+    font-size: 16px;
+  }
+
+  .poriv-error-message {
+    font-size: 13px;
+  }
+
+  .poriv-manual-table-container {
+    margin: 15px;
+    padding: 15px;
+  }
+
+  .poriv-manual-table-title {
+    font-size: 18px;
+  }
+
+  .poriv-manual-product-item {
+    padding: 12px;
+    margin: 8px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .poriv-loading-indicator {
+    padding: 12px 15px;
+    font-size: 13px;
+    gap: 8px;
+  }
+
+  .poriv-loading-spinner {
+    width: 14px;
+    height: 14px;
+  }
+
+  .poriv-error-container {
+    padding: 25px 10px;
+    margin: 10px 0;
+  }
+
+  .poriv-manual-table-container {
+    margin: 10px;
+    padding: 12px;
+  }
+
+  .poriv-manual-table-title {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+
+  .poriv-manual-product-item {
+    padding: 10px;
+    margin: 6px 0;
+  }
+
+  .poriv-manual-product-price {
+    font-size: 15px;
+  }
+}
