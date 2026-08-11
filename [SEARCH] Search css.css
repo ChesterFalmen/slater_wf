@@ -1,0 +1,257 @@
+/* Контейнер пошуку */
+.search-bot-wrapper {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Контейнер результатів */
+.search-result-wrapper {
+  display: none;
+  /* Приховуємо до завантаження JS */
+}
+
+.search-result-list.search-result-items {
+  width: 100% !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  display: block !important;
+}
+
+/* Перевизначення стилів Webflow для сітки */
+.search-result-list.search-result-items .products__collection-list.catalog {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 20px !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Порожній стан */
+#search-empty {
+  padding: 20px;
+  border: 1px dashed #e5e7eb;
+  border-radius: 12px;
+  background: #fafafa;
+  margin-bottom: 16px;
+  display: none;
+}
+
+/* Сітка карток — ми використовуємо твої класи .products__collection-list.catalog */
+.search-result-list.search-result-items #search-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 20px !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 0 20px !important;
+  width: 100% !important;
+}
+
+@media (max-width: 1200px) {
+
+  .search-result-list.search-result-items .products__collection-list.catalog,
+  .search-result-list.search-result-items #search-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+@media (max-width: 991px) {
+
+  .search-result-list.search-result-items .products__collection-list.catalog,
+  .search-result-list.search-result-items #search-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 479px) {
+
+  .search-result-list.search-result-items .products__collection-list.catalog,
+  .search-result-list.search-result-items #search-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .h5.leader {
+    margin-top: auto;
+    font-size: 20px !important;
+  }
+
+  .mobile-cart {
+    align-items: start;
+  }
+
+  .add-to-cart-new {
+    width: 11em !important;
+    height: 11em !important;
+  }
+}
+
+/* Картка в стилі Webflow */
+.product-card.catalog.new {
+  border: 0.0694445em solid #77777740;
+  border-radius: 0.347222em;
+  background: #fff;
+  transition: box-shadow .2s, border-color .2s;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.product-card.catalog.new:hover {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, .08);
+  border-color: #e8e8e8;
+}
+
+.leader-card-wrapper {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+  z-index: 0;
+  grid-row-gap: 1.04167em;
+  cursor: pointer;
+  padding-bottom: 1.04167em;
+  position: relative;
+  overflow: hidden;
+}
+
+.leader-card-img-wrapper {
+  padding: 0;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #fff;
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  z-index: auto !important;
+}
+
+.leader-card-info-wrapper {
+  padding: 0 1.04167em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+  flex: 0 0 auto;
+}
+
+.leader-card-top-wrapper {
+  min-height: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.t-text.text_with_dots_1.colored {
+  font-weight: 400;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: #333;
+  font-size: 14px;
+}
+
+.leader-card-bot-wrapper {
+  padding: 0 1.04167em;
+  flex: 0 0 auto;
+  margin-top: auto;
+}
+
+.mobile-cart {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.leader-card-price-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.347222em;
+  justify-content: left;
+}
+
+.leader-card-price-sale {
+  display: flex;
+  align-items: center;
+  gap: 0.347222em;
+  justify-content: center;
+}
+
+.t-text.sale {
+  text-decoration: line-through;
+  color: #9aa0a6;
+  font-size: 14px;
+}
+
+.h5.leader {
+  font-weight: 800;
+  color: #000;
+  font-size: 18px;
+  line-height: 120%;
+  margin: 0;
+}
+
+/* бейдж -% */
+.leader-card-discount-wrapper {
+  margin-left: auto;
+}
+
+.leader-card-discount-wrapper .xxs-text {
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  background: #c61717;
+  padding: 4px 8px;
+  border-radius: 999px;
+  line-height: 1;
+  display: inline-block;
+}
+
+.no_availible_discount {
+  display: none !important;
+}
+
+/* кнопка зі стрілкою справа (як у Webflow) */
+.add-to-cart-new {
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+  z-index: 100;
+  width: 3.47222em;
+  height: 2.77778em;
+  opacity: 0;
+  transition: opacity .2s ease;
+}
+
+.product-card.catalog.new:hover .add-to-cart-new {
+  opacity: 1;
+}
+
+.add-to-cart-new .add-to-cart-new-button.is-arrow {
+  width: 100%;
+  height: 100%;
+  background-image: url("https://cdn.prod.website-files.com/6511ef558d67afe353cac882/68a30849b50267d026de02d9_arrow-up-right-svgrepo-com.svg");
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  border-radius: 0.347222em;
+  border: none;
+  cursor: pointer;
+  transition: background-color .2s;
+}
