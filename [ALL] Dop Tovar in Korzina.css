@@ -1,0 +1,602 @@
+/* ============================================ */
+/* ФІКСАЦІЯ HEADER КОРЗИНИ НА МОБІЛЬНИХ */
+/* ============================================ */
+
+/* Контейнер корзини - flex для header + content */
+.w-commerce-commercecartcontainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Header завжди зверху (не скролиться) */
+.w-commerce-commercecartheader,
+.cart-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #fff;
+  flex-shrink: 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Wrapper форми - скролиться */
+.w-commerce-commercecartformwrapper {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+/* Для Safari iOS */
+@supports (-webkit-touch-callout: none) {
+  .w-commerce-commercecartwrapper[data-cart-open] {
+    height: 100vh;
+    height: -webkit-fill-available;
+  }
+}
+
+/* Блокування scroll на body */
+body:has(.w-commerce-commercecartwrapper[data-cart-open]) {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+*============================================*/
+/* ПРИБИРАЄМО СТРІЛКИ У INPUT NUMBER (MOBILE) */
+/* ============================================ */
+@media (max-width: 768px) {
+
+  input[type="number"].cart-quantity::-webkit-outer-spin-button,
+  input[type="number"].cart-quantity::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"].cart-quantity {
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+}
+
+/* ============================================ */
+/* СЕКЦІЯ ДОДАТКОВИХ ТОВАРІВ */
+/* ============================================ */
+
+[data-cart-additional-section] {
+  position: relative;
+  margin-top: 24px;
+}
+
+[data-cart-additional-section]>h3,
+[data-cart-additional-section]>.heading {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #374151;
+}
+
+.wrapper_header_dop_block h4 {
+  margin-bottom: 0px;
+}
+
+/* ============================================ */
+/* КНОПКИ НАВІГАЦІЇ СВАЙПЕРА (ЗВЕРХУ СПРАВА) */
+/* ============================================ */
+
+/* Wrapper для заголовка і кнопок */
+.wrapper_header_dop_block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  gap: 16px;
+}
+
+/* Заголовок без margin */
+.wrapper_header_dop_block h3,
+.wrapper_header_dop_block .heading {
+  margin: 0;
+  line-height: 32px;
+  /* Висота кнопок */
+  flex: 1;
+}
+
+/* Кнопки навігації */
+.wrapper_header_dop_block .cart-additional-nav-container {
+  position: static;
+  /* Змінено з absolute */
+  flex-shrink: 0;
+}
+
+.cart-additional-nav-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.cart-additional-nav {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #6b7280;
+  padding: 0;
+}
+
+.cart-additional-nav:hover:not(:disabled) {
+  background: transparent;
+  border-color: #dc2626;
+  color: #dc2626;
+}
+
+.cart-additional-nav:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.cart-additional-nav:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.cart-additional-nav svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2;
+}
+
+/* ============================================ */
+/* SWIPER WRAPPER */
+/* ============================================ */
+
+.cart-additional-swiper-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin-top: 10px;
+  /* Відступ для кнопок навігації */
+}
+
+/* ============================================ */
+/* КОНТЕЙНЕР ДЛЯ КАРТОК (SWIPER) */
+/* ============================================ */
+
+[data-cart-additional-items] {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+[data-cart-additional-items]::-webkit-scrollbar {
+  display: none;
+}
+
+/* ============================================ */
+/* КАРТКА ДОДАТКОВОГО ТОВАРУ */
+/* ============================================ */
+
+.cart-additional-item {
+  flex: 0 0 calc(50% - 6px);
+  min-width: calc(50% - 6px);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  transition: all 0.2s;
+  scroll-snap-align: start;
+  position: relative;
+  overflow: hidden;
+}
+
+.cart-additional-item:hover {
+  border-color: #dc2626;
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.1);
+}
+
+/* ============================================ */
+/* ЗОБРАЖЕННЯ */
+/* ============================================ */
+
+.cart-additional-item__image-link {
+  display: block;
+  text-decoration: none;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: #f9fafb;
+  flex-shrink: 0;
+}
+
+.cart-additional-item__image {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-additional-item__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  padding: 0;
+}
+
+/* ============================================ */
+/* КОНТЕНТ (ТЕКСТ ПІД ФОТО) */
+/* ============================================ */
+
+.cart-additional-item__content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  flex: 1;
+}
+
+.cart-additional-item__info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+/* ============================================ */
+/* НАЗВА */
+/* ============================================ */
+
+.cart-additional-item__name-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.cart-additional-item__name {
+  font-size: 13px;
+  font-weight: 500;
+  color: #111827;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  margin-bottom: 4px;
+}
+
+.cart-additional-item__name-link:hover .cart-additional-item__name {
+  color: #dc2626;
+}
+
+/* ============================================ */
+/* БЛОК З ЦІНОЮ ТА КНОПКОЮ */
+/* ============================================ */
+
+.cart-additional-item__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: auto;
+}
+
+/* ============================================ */
+/* ЦІНИ (ЛІВОРУЧ) */
+/* ============================================ */
+
+.cart-additional-item__prices {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.cart-additional-item__price-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Стара ціна */
+.cart-additional-item__old-price {
+  font-size: 11px;
+  color: #9ca3af;
+  text-decoration: line-through;
+  font-weight: 400;
+}
+
+/* Знижка */
+.cart-additional-item__discount {
+  font-size: 10px;
+  color: #fff;
+  font-weight: 600;
+  background: #dc2626;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+/* Актуальна ціна */
+.cart-additional-item__price {
+  font-weight: 700;
+  color: #111827;
+  font-size: 16px;
+  line-height: 1;
+}
+
+/* ============================================ */
+/* КНОПКА + (ПРАВОРУЧ) */
+/* ============================================ */
+
+.cart-additional-item__actions {
+  display: flex;
+  gap: 0;
+  align-items: center;
+  margin: 0;
+}
+
+.cart-additional-form-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.cart-additional-form-wrapper .add-to-cart {
+  display: flex;
+  align-items: center;
+}
+
+.cart-additional-form-wrapper .w-commerce-commerceaddtocartform {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.cart-additional-form-wrapper .w-commerce-commerceaddtocartquantityinput {
+  display: none;
+}
+
+.cart-additional-form-wrapper .w-commerce-commerceaddtocartbutton {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 1.5px solid #10b981;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #10b981;
+  font-size: 18px;
+  font-weight: 600;
+  transition: all 0.2s;
+  padding: 0;
+}
+
+.cart-additional-form-wrapper .w-commerce-commerceaddtocartbutton:hover:not(:disabled) {
+  background: #10b981;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.cart-additional-form-wrapper .w-commerce-commerceaddtocartbutton:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.cart-additional-form-wrapper .w-commerce-commerceaddtocartbutton:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+/* ============================================ */
+/* КНОПКА ВИДАЛЕННЯ (X) */
+/* ============================================ */
+
+.cart-additional-item__remove {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  color: #6b7280;
+  transition: all 0.2s;
+  padding: 0;
+  z-index: 10;
+}
+
+.cart-additional-item__remove:hover {
+  background: #fee2e2;
+  border-color: #fecaca;
+  color: #dc2626;
+  transform: scale(1.1);
+}
+
+.cart-additional-item__remove:active {
+  transform: scale(0.95);
+}
+
+/* ============================================ */
+/* ERROR STATES */
+/* ============================================ */
+
+.cart-additional-form-wrapper .w-commerce-commerceaddtocartoutofstock,
+.cart-additional-form-wrapper .w-commerce-commerceaddtocarterror {
+  display: none !important;
+}
+
+/* ============================================ */
+/* АНІМАЦІЇ */
+/* ============================================ */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================ */
+/* RESPONSIVE - TABLET */
+/* ============================================ */
+
+@media (max-width: 991px) {
+  .cart-additional-item {
+    padding: 0;
+  }
+
+  .cart-additional-item__content {
+    padding: 10px;
+  }
+}
+
+/* ============================================ */
+/* RESPONSIVE - MOBILE */
+/* ============================================ */
+
+@media (max-width: 768px) {
+  [data-cart-additional-section] {
+    margin-top: 16px;
+  }
+
+  [data-cart-additional-section]>h3,
+  [data-cart-additional-section]>.heading {
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+
+  .cart-additional-nav-container {
+    gap: 6px;
+  }
+
+  .cart-additional-item__content {
+    padding: 10px;
+  }
+
+  .cart-additional-item__name {
+    font-size: 12px;
+  }
+
+  .cart-additional-item__old-price {
+    font-size: 10px;
+  }
+
+  .cart-additional-item__discount {
+    font-size: 9px;
+    padding: 1px 3px;
+  }
+
+  .cart-additional-item__price {
+    font-size: 15px;
+  }
+
+  .cart-additional-form-wrapper .w-commerce-commerceaddtocartbutton {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .cart-additional-item__remove {
+    width: 26px;
+    height: 26px;
+    font-size: 14px;
+  }
+}
+
+/* ============================================ */
+/* RESPONSIVE - EXTRA SMALL MOBILE */
+/* ============================================ */
+
+@media (max-width: 479px) {
+  .cart-additional-nav {
+    width: 35px;
+    height: 35px;
+  }
+
+  .cart-additional-item {
+    flex: 0 0 calc(50% - 4px);
+    min-width: calc(50% - 4px);
+  }
+
+  [data-cart-additional-items] {
+    gap: 8px;
+  }
+
+  .cart-additional-item__content {
+    padding: 8px;
+  }
+
+  .cart-additional-item__name {
+    font-size: 11px;
+    -webkit-line-clamp: 2;
+  }
+
+  .cart-additional-item__price {
+    font-size: 14px;
+  }
+
+  .cart-additional-form-wrapper .w-commerce-commerceaddtocartbutton {
+    width: 37px;
+    height: 37px;
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+}
+
+/* ============================================ */
+/* CSS ЗМІННІ */
+/* ============================================ */
+
+:root {
+  --cart-additional-primary: #10b981;
+  --cart-additional-danger: #dc2626;
+  --cart-additional-gray: #6b7280;
+  --cart-additional-bg: #fff;
+  --cart-additional-border: #e5e7eb;
+}
