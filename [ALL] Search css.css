@@ -1,0 +1,280 @@
+  .leader-ci.swiper-slide.w-dyn-item {
+    transform: none !important;
+  }
+
+  /* Блокування прокрутки сторінки при відкритому пошуку */
+  body.search-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
+
+  /* якір одразу після хедера */
+  .search-dd-anchor {
+    position: relative;
+    /* для абсолютного позиціонування dropdown всередині */
+    z-index: 998;
+    /* нижче за сам dropdown */
+  }
+
+  /* Dropdown */
+  .search-dd {
+    /* ORIGINAL: position: absolute; - закоментовано для тесту */
+    position: absolute;
+    /* ТЕСТ: змінено з fixed на absolute для легшого відкату */
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 0px 0px 10px 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+    overflow: hidden;
+    /* змінимо на hidden, щоб контролювати прокрутку */
+    z-index: 9999;
+    display: none;
+    max-height: 70vh;
+  }
+
+  .search-dd.open {
+    display: block;
+    background-color: white;
+    border-radius: 0px 0px 10px 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    /* ТЕСТ: прибираємо відступи - закоментувати наступні рядки для відкату */
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Item */
+  .s-item {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding: 12px;
+    text-decoration: none;
+    color: inherit;
+    border-bottom: 1px solid #f3f3f3;
+    transition: background .2s;
+  }
+
+  .s-item:hover {
+    background: #fafafa
+  }
+
+  /* Image */
+  .s-img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    background: #fff;
+    flex: 0 0 80px;
+  }
+
+  /* Content */
+  .s-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px
+  }
+
+  /* Контейнер списку для десктопу */
+  .sd-list {
+    max-height: 70vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .s-title {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.35;
+    color: #111;
+    word-break: break-word
+  }
+
+  /* Price row */
+  .s-price-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  /* Left: old/new price + discount */
+  .s-price-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px
+  }
+
+  .s-old {
+    font-size: 14px;
+    color: #9aa0a6;
+    text-decoration: line-through
+  }
+
+  .s-price {
+    font-size: 14px;
+    font-weight: 600;
+    color: #111
+  }
+
+  /* Discount badge */
+  .s-badge {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    background: #ff4d4f;
+    border-radius: 999px;
+    padding: 3px 8px;
+    line-height: 1;
+  }
+
+  /* Right: arrow */
+  .s-arrow {
+    width: 24px;
+    height: 24px;
+    flex: 0 0 24px;
+    opacity: .7;
+    transition: opacity .2s;
+  }
+
+  .s-item:hover .s-arrow {
+    opacity: 1
+  }
+
+  /* Мобільна шапка всередині дропдауна */
+  .sd-header {
+    display: none;
+  }
+
+  /* ---- Mobile (≤ 767px) ---- */
+  @media (max-width: 767px) {
+
+    /* показуємо мобільну шапку */
+    .sd-header {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 44px;
+      padding: 0 12px;
+      background: #fff;
+      border-bottom: 1px solid #eee;
+    }
+
+    .sd-title {
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .sd-close {
+      width: 36px;
+      height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      background: #fff;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .sd-close:hover {
+      background: #f5f5f5;
+    }
+
+    .sd-close svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* щоб список прокручувався під шапкою */
+    .sd-list {
+      position: relative;
+      z-index: 1;
+      max-height: calc(70vh - 44px);
+      /* віднімаємо висоту шапки */
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      /* плавна прокрутка на iOS */
+    }
+
+    /* ширина на всю в'юпортну, з невеликими полями */
+    .search-dd {
+      left: 8px !important;
+      right: 8px;
+      width: calc(100vw - 16px) !important;
+      border-radius: 12px;
+      max-height: 80vh;
+      z-index: 998;
+    }
+
+    .s-item {
+      gap: 12px;
+      padding: 12px;
+    }
+
+    .s-img {
+      width: 64px;
+      height: 64px;
+    }
+
+    .s-title {
+      font-size: 14px;
+      line-height: 1.35;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      /* 2 рядки максимум */
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .s-price-row {
+      gap: 10px;
+    }
+
+    .s-old {
+      font-size: 13px;
+    }
+
+    .s-price {
+      font-size: 14px;
+    }
+
+    .s-badge {
+      font-size: 14px;
+      padding: 4px 8px;
+    }
+
+    .s-arrow {
+      width: 20px;
+      height: 20px;
+    }
+
+    body.no-scroll {
+      overflow: hidden;
+    }
+  }
+
+  /* ---- Very small (≤ 360px) ---- */
+  @media (max-width: 360px) {
+    .s-img {
+      width: 56px;
+      height: 56px;
+    }
+
+    .s-title {
+      font-size: 13px;
+    }
+
+    .s-price {
+      font-size: 14px;
+    }
+  }
