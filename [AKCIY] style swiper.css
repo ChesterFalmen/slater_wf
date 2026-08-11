@@ -1,0 +1,8 @@
+.leader-cl {
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+
+.leader-ci {
+  scroll-snap-align: start;
+}
