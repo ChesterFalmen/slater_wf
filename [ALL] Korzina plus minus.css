@@ -1,0 +1,218 @@
+/* ============================================ */
+/* БЛОК КІЛЬКОСТІ ТОВАРУ В КОШИКУ */
+/* ============================================ */
+/* ============================================ */
+/* ФІКСАЦІЯ HEADER КОРЗИНИ НА МОБІЛЬНИХ */
+/* ============================================ */
+
+/* Корзина на всю висоту */
+.w-commerce-commercecartwrapper[data-cart-open] {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  /* Dynamic viewport для Safari */
+  max-height: -webkit-fill-available;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+/* Контейнер корзини - flex для header + content */
+.w-commerce-commercecartcontainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Header завжди зверху (не скролиться) */
+.w-commerce-commercecartheader,
+.cart-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #fff;
+  flex-shrink: 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Wrapper форми - скролиться */
+.w-commerce-commercecartformwrapper {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+/* Footer корзини теж не скролиться */
+.w-commerce-commercecartfooter {
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  background: #fff;
+  flex-shrink: 0;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* Для Safari iOS */
+@supports (-webkit-touch-callout: none) {
+  .w-commerce-commercecartwrapper[data-cart-open] {
+    height: 100vh;
+    height: -webkit-fill-available;
+  }
+}
+
+/* Блокування scroll на body */
+body:has(.w-commerce-commercecartwrapper[data-cart-open]) {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+``` --- ## ✅ СТРУКТУРА ПІСЛЯ ЗАСТОСУВАННЯ: ``` ┌─────────────────────────────┐ │ HEADER (фіксований) │ ← sticky top: 0 ├─────────────────────────────┤ │ │ │ ТОВАРИ (скролиться) │ ← overflow-y: auto │ │ │ │ ├─────────────────────────────┤ │ FOOTER (фіксований) │ ← sticky bottom: 0 └─────────────────────────────┘ .div-block-93 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  max-width: 150px;
+}
+
+/* Input кількості */
+.cart-quantity {
+  width: 90px;
+  height: 34px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fff;
+  color: #111827;
+  padding: 0;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  appearance: none;
+  /* Прибираємо стрілки */
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+}
+
+.cart-quantity::-webkit-outer-spin-button,
+.cart-quantity::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.cart-quantity:focus {
+  outline: none;
+  border-color: #dc2626;
+}
+
+/* Контейнер для кнопок */
+.buttons_in_card_popup {
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  pointer-events: none;
+  /* Щоб клік проходив через контейнер */
+}
+
+/* Кнопки + та - */
+.btn_in_card_popup {
+  width: 26px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  pointer-events: auto;
+  /* Вмикаємо клік на кнопках */
+  text-decoration: none;
+}
+
+/* Текст всередині кнопок */
+.text-block-73,
+.text-block-74 {
+  font-size: 20px;
+  font-weight: 500;
+  color: #6b7280;
+  line-height: 1;
+}
+
+.btn_in_card_popup:hover .text-block-73,
+.btn_in_card_popup:hover .text-block-74 {
+  color: #dc2626;
+}
+
+/* Кнопка мінус (ліворуч) */
+.btn_in_card_popup[minus_count_item] {
+  order: -1;
+  /* Перша за порядком */
+}
+
+/* Кнопка плюс (праворуч) */
+.btn_in_card_popup[plus_count_item] {
+  order: 1;
+  /* Остання за порядком */
+}
+
+/* ============================================ */
+/* RESPONSIVE - MOBILE */
+/* ============================================ */
+
+@media (max-width: 768px) {
+  .div-block-93 {
+    max-width: 130px;
+  }
+
+  .btn_in_card_popup {
+    width: 22px;
+    height: 32px;
+  }
+
+  .text-block-73,
+  .text-block-74 {
+    font-size: 18px;
+  }
+
+  .cart-quantity {
+    width: 110px;
+  }
+}
+
+@media (max-width: 479px) {
+  .div-block-93 {
+    max-width: 120px;
+  }
+
+  .btn_in_card_popup {
+    width: 20px;
+    height: 30px;
+  }
+
+  .text-block-73,
+  .text-block-74 {
+    font-size: 16px;
+  }
+
+  .cart-quantity {
+    width: 80px;
+  }
+
+  .btn_in_card_popup {
+    min-width: 2em !important;
+  }
+}
