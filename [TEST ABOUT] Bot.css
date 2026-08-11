@@ -1,0 +1,1285 @@
+/**
+ * Leader-mah Чат-бот - Стилі
+ * Включає всі стилі з demo.html + покращені стилі для товарів
+ */
+
+/* Основні стилі чат-бота */
+.leader-chatbot-trigger {
+  position: fixed !important;
+  right: 20px !important;
+  bottom: 20px !important;
+  width: 60px !important;
+  height: 60px !important;
+  background: #007cba !important;
+  border-radius: 50% !important;
+  border: none !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  z-index: 999999 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.3s ease !important;
+  color: white !important;
+  font-size: 24px !important;
+  font-family: inherit !important;
+  outline: none !important;
+}
+
+.leader-chatbot-trigger:hover {
+  background: #005a8b !important;
+  transform: scale(1.1) !important;
+}
+
+.leader-chatbot-trigger.pulse {
+  animation: chatbot-pulse 2s infinite !important;
+}
+
+@keyframes chatbot-pulse {
+  0% {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  }
+
+  50% {
+    box-shadow: 0 4px 20px rgba(0, 124, 186, 0.4) !important;
+  }
+
+  100% {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  }
+}
+
+.leader-chatbot-trigger-icon {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.leader-chatbot-trigger-icon svg {
+  width: 100%;
+  height: 100%;
+  color: white !important;
+}
+
+.leader-chatbot-trigger-pulse {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  border-radius: 50% !important;
+  background: rgba(0, 124, 186, 0.3) !important;
+  animation: pulse-ring 2s infinite !important;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1) !important;
+    opacity: 1 !important;
+  }
+
+  100% {
+    transform: scale(1.4) !important;
+    opacity: 0 !important;
+  }
+}
+
+.leader-chatbot-notification-badge {
+  position: absolute !important;
+  top: -5px !important;
+  right: -5px !important;
+  background: #dc3545 !important;
+  color: white !important;
+  border-radius: 50% !important;
+  width: 20px !important;
+  height: 20px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 12px !important;
+  font-weight: bold !important;
+  border: 2px solid white !important;
+}
+
+.leader-chatbot-window {
+  position: fixed !important;
+  right: 20px !important;
+  bottom: 100px !important;
+  width: 480px !important;
+  height: 700px !important;
+  max-height: calc(100vh - 140px) !important;
+  background: #ffffff !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2) !important;
+  z-index: 999998 !important;
+  display: none !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  opacity: 0 !important;
+  transform: translateY(20px) scale(0.95) !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Відключаємо transition під час drag & drop */
+.leader-chatbot-window.dragging {
+  transition: none !important;
+}
+
+.leader-chatbot-window.show {
+  display: flex !important;
+  opacity: 1 !important;
+  transform: translateY(0) scale(1) !important;
+  animation: fadeInUp 0.3s ease !important;
+}
+
+.leader-chatbot-window.minimized {
+  height: auto !important;
+  min-height: auto !important;
+  width: 300px !important;
+  max-width: 300px !important;
+  cursor: pointer !important;
+}
+
+.leader-chatbot-window.minimized .leader-chatbot-messages,
+.leader-chatbot-window.minimized .leader-chatbot-input-area {
+  display: none !important;
+}
+
+.leader-chatbot-window.minimized .leader-chatbot-header {
+  cursor: pointer !important;
+}
+
+.leader-chatbot-window.minimized .leader-chatbot-header:hover {
+  background: linear-gradient(135deg, #005a8b 0%, #004066 100%) !important;
+}
+
+.leader-chatbot-header {
+  background: linear-gradient(135deg, #007cba 0%, #005a8b 100%) !important;
+  color: white !important;
+  padding: 16px !important;
+  font-weight: 600 !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  font-size: 16px !important;
+  cursor: grab !important;
+  user-select: none !important;
+}
+
+.leader-chatbot-header:active {
+  cursor: grabbing !important;
+}
+
+.leader-chatbot-header-info {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.leader-chatbot-avatar {
+  width: 40px !important;
+  height: 40px !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: white !important;
+}
+
+.leader-chatbot-avatar svg {
+  width: 90%;
+  height: 90%;
+  color: white !important;
+}
+
+.leader-chatbot-header-text {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2px !important;
+}
+
+.leader-chatbot-title {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  margin: 0 !important;
+}
+
+.leader-chatbot-status {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  font-size: 12px !important;
+  opacity: 0.9 !important;
+}
+
+.status-indicator {
+  width: 8px !important;
+  height: 8px !important;
+  background: #4CAF50 !important;
+  border-radius: 50% !important;
+  animation: status-pulse 2s infinite !important;
+}
+
+@keyframes status-pulse {
+
+  0%,
+  100% {
+    opacity: 1 !important;
+  }
+
+  50% {
+    opacity: 0.5 !important;
+  }
+}
+
+.status-text {
+  font-size: 12px !important;
+}
+
+.leader-chatbot-header-actions {
+  display: flex !important;
+  gap: 8px !important;
+}
+
+.leader-chatbot-close,
+.leader-chatbot-minimize {
+  background: none !important;
+  border: none !important;
+  color: white !important;
+  font-size: 16px !important;
+  cursor: pointer !important;
+  padding: 8px !important;
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 6px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: background 0.2s ease !important;
+}
+
+.leader-chatbot-close:hover,
+.leader-chatbot-minimize:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.leader-chatbot-messages {
+  flex: 1 !important;
+  overflow-y: auto !important;
+  padding: 16px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  scroll-behavior: smooth !important;
+  background: #f8f9fa !important;
+}
+
+.leader-chatbot-messages::-webkit-scrollbar {
+  width: 6px !important;
+}
+
+.leader-chatbot-messages::-webkit-scrollbar-track {
+  background: #f1f1f1 !important;
+}
+
+.leader-chatbot-messages::-webkit-scrollbar-thumb {
+  background: #c1c1c1 !important;
+  border-radius: 3px !important;
+}
+
+.leader-chatbot-message {
+  max-width: 85% !important;
+  padding: 12px 16px !important;
+  border-radius: 18px !important;
+  word-wrap: break-word !important;
+  line-height: 1.4 !important;
+  font-size: 14px !important;
+  animation: messageSlideIn 0.3s ease !important;
+  position: relative !important;
+}
+
+@keyframes messageSlideIn {
+  from {
+    opacity: 0 !important;
+    transform: translateY(10px) !important;
+  }
+
+  to {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+}
+
+.leader-chatbot-message.user {
+  background: #007cba !important;
+  color: white !important;
+  align-self: flex-end !important;
+  margin-left: auto !important;
+}
+
+.leader-chatbot-message.bot {
+  background: #ffffff !important;
+  color: #333333 !important;
+  align-self: flex-start !important;
+  border: 1px solid #e9ecef !important;
+}
+
+.message-text {
+  margin-bottom: 8px !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  word-break: break-word !important;
+  line-height: 1.5 !important;
+  text-align: left !important;
+}
+
+/* Стилі для параграфів */
+.message-text p {
+  margin: 0 0 12px 0 !important;
+  line-height: 1.5 !important;
+}
+
+.message-text p:last-child {
+  margin-bottom: 0 !important;
+}
+
+.message-text strong {
+  font-weight: bold !important;
+}
+
+.message-text em {
+  font-style: italic !important;
+}
+
+.message-text ol,
+.message-text ul {
+  margin: 12px 0 !important;
+  padding-left: 24px !important;
+  line-height: 1.5 !important;
+}
+
+.message-text li {
+  margin: 6px 0 !important;
+  line-height: 1.5 !important;
+}
+
+.message-text ol li {
+  margin-bottom: 8px !important;
+  list-style-type: decimal !important;
+}
+
+.message-text ol li:last-child {
+  margin-bottom: 0 !important;
+}
+
+.message-additional {
+  margin-top: 12px !important;
+}
+
+.leader-chatbot-message-time {
+  font-size: 10px !important;
+  opacity: 0.7 !important;
+  margin-top: 4px !important;
+}
+
+/* Стилі для товарів */
+.products-container {
+  margin-top: 12px !important;
+}
+
+.products-container h4 {
+  margin: 0 0 12px 0 !important;
+  font-size: 14px !important;
+  color: #007cba !important;
+  font-weight: 600 !important;
+}
+
+.products-grid {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+
+.product-card {
+  background: #ffffff !important;
+  border: 1px solid #e9ecef !important;
+  border-radius: 8px !important;
+  padding: 12px !important;
+  display: flex !important;
+  flex-direction: column;
+  gap: 12px !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+}
+
+.product-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+  transform: translateY(-1px) !important;
+}
+
+.product-image {
+  border-radius: 6px !important;
+  overflow: hidden !important;
+  flex-shrink: 0 !important;
+}
+
+.product-image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+.product-info {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+}
+
+.product-name {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: #333333 !important;
+  margin: 0 !important;
+  line-height: 1.3 !important;
+}
+
+.product-description {
+  font-size: 11px !important;
+  color: #6c757d !important;
+  margin: 0 !important;
+  line-height: 1.3 !important;
+}
+
+.product-price {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: #007cba !important;
+  margin: 4px 0 !important;
+}
+
+.product-link {
+  font-size: 12px !important;
+  color: #007cba !important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+  transition: color 0.2s ease !important;
+}
+
+.product-link:hover {
+  color: #005a8b !important;
+  text-decoration: underline !important;
+}
+
+/* Характеристики товарів */
+.product-characteristics {
+  margin: 8px 0 !important;
+  font-size: 11px !important;
+  color: #6c757d !important;
+  line-height: 1.3 !important;
+}
+
+.characteristic-item {
+  display: inline-block !important;
+  margin-right: 8px !important;
+  margin-bottom: 2px !important;
+}
+
+.characteristic-item strong {
+  color: #495057 !important;
+}
+
+/* Рейтинг товару */
+.product-rating {
+  position: absolute !important;
+  top: 4px !important;
+  right: 4px !important;
+  background: rgba(0, 0, 0, 0.7) !important;
+  color: white !important;
+  padding: 2px 6px !important;
+  border-radius: 10px !important;
+  font-size: 10px !important;
+  font-weight: bold !important;
+}
+
+/* Дії з товарами */
+.product-actions {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-top: 8px !important;
+}
+
+.product-save-btn {
+  background: none !important;
+  border: none !important;
+  font-size: 16px !important;
+  cursor: pointer !important;
+  padding: 4px !important;
+  border-radius: 4px !important;
+  transition: background 0.2s ease !important;
+}
+
+.product-save-btn:hover {
+  background: rgba(220, 53, 69, 0.1) !important;
+}
+
+.product-save-btn.saved {
+  color: #dc3545 !important;
+}
+
+/* Швидкі дії */
+.leader-chatbot-input-area {
+  background: #ffffff !important;
+  border-top: 1px solid #e9ecef !important;
+}
+
+.leader-chatbot-quick-actions {
+  padding: 12px 16px 8px 16px !important;
+  display: flex !important;
+  gap: 8px !important;
+  flex-wrap: wrap !important;
+}
+
+.quick-action-btn {
+  background: #f8f9fa !important;
+  border: 1px solid #dee2e6 !important;
+  color: #495057 !important;
+  padding: 6px 12px !important;
+  border-radius: 16px !important;
+  font-size: 12px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  white-space: nowrap !important;
+}
+
+.quick-action-btn:hover {
+  background: #007cba !important;
+  color: white !important;
+  border-color: #007cba !important;
+}
+
+.leader-chatbot-input-container {
+  padding: 16px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+}
+
+.leader-chatbot-input-wrapper {
+  display: flex !important;
+  gap: 8px !important;
+  align-items: flex-end !important;
+}
+
+.leader-chatbot-input {
+  flex: 1 !important;
+  padding: 10px 14px !important;
+  border: 1px solid #ddd !important;
+  border-radius: 20px !important;
+  outline: none !important;
+  font-size: 14px !important;
+  font-family: inherit !important;
+  background: white !important;
+  color: #333333 !important;
+  transition: border-color 0.2s ease !important;
+  resize: none !important;
+  min-height: 20px !important;
+  max-height: 120px !important;
+  line-height: 1.4 !important;
+}
+
+.leader-chatbot-input:focus {
+  border-color: #007cba !important;
+  box-shadow: 0 0 0 2px rgba(0, 124, 186, 0.1) !important;
+}
+
+.leader-chatbot-input::placeholder {
+  color: #999 !important;
+}
+
+.leader-chatbot-send {
+  background: #007cba !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 50% !important;
+  width: 40px !important;
+  height: 40px !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 16px !important;
+  transition: all 0.2s ease !important;
+  outline: none !important;
+  flex-shrink: 0 !important;
+}
+
+.leader-chatbot-send:hover:not(:disabled) {
+  background: #005a8b !important;
+  transform: scale(1.05) !important;
+}
+
+.leader-chatbot-send:disabled {
+  background: #ccc !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+}
+
+.leader-chatbot-input-footer {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  font-size: 11px !important;
+  color: #6c757d !important;
+}
+
+.character-count {
+  font-weight: 500 !important;
+}
+
+.character-count-warning {
+  color: #ffc107 !important;
+}
+
+.character-count-danger {
+  color: #dc3545 !important;
+}
+
+.powered-by {
+  font-style: italic !important;
+}
+
+/* Індикатор набору тексту */
+.typing-indicator {
+  display: none;
+  padding: 12px 16px !important;
+  align-items: center !important;
+  gap: 12px !important;
+  background: #ffffff !important;
+  border-top: 1px solid #e9ecef !important;
+}
+
+.typing-dots {
+  display: flex !important;
+  gap: 4px !important;
+}
+
+.typing-dots span {
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 50% !important;
+  background: #ccc !important;
+  animation: typing-pulse 1.4s ease-in-out infinite both !important;
+}
+
+.typing-dots span:nth-child(1) {
+  animation-delay: -0.32s !important;
+}
+
+.typing-dots span:nth-child(2) {
+  animation-delay: -0.16s !important;
+}
+
+@keyframes typing-pulse {
+
+  0%,
+  80%,
+  100% {
+    transform: scale(0) !important;
+    opacity: 0.5 !important;
+  }
+
+  40% {
+    transform: scale(1) !important;
+    opacity: 1 !important;
+  }
+}
+
+.typing-text {
+  font-size: 12px !important;
+  color: #6c757d !important;
+  font-style: italic !important;
+}
+
+/* Мобільні стилі */
+/* Приховуємо кнопку згортання на мобільних пристроях */
+.desktop-only {
+  display: block !important;
+}
+
+/* Планшети - також приховуємо кнопку згортання */
+@media (max-width: 1024px) {
+  .desktop-only {
+    display: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .leader-chatbot-window {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    border-radius: 0 !important;
+  }
+
+  .leader-chatbot-header-text {
+    gap: 10px;
+  }
+}
+
+/* Клас для мобільної версії (додається через JavaScript) */
+.leader-chatbot-window.mobile-fullscreen {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-height: 100% !important;
+  border-radius: 0 !important;
+  transform: none !important;
+}
+
+.leader-chatbot-trigger {
+  right: 15px !important;
+  bottom: 15px !important;
+  width: 55px !important;
+  height: 55px !important;
+  font-size: 22px !important;
+}
+
+.leader-chatbot-message {
+  max-width: 90% !important;
+}
+
+.products-grid {
+  gap: 8px !important;
+}
+
+.product-card {
+  padding: 10px !important;
+}
+
+.quick-action-btn {
+  font-size: 11px !important;
+  padding: 5px 10px !important;
+}
+
+/* Додаткові анімації */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Стилі для форми консультації (якщо потрібно) */
+.consultation-form {
+  background: #f8f9fa !important;
+  border: 1px solid #dee2e6 !important;
+  border-radius: 8px !important;
+  padding: 16px !important;
+  margin-top: 12px !important;
+}
+
+.consultation-form h4 {
+  margin: 0 0 12px 0 !important;
+  font-size: 14px !important;
+  color: #007cba !important;
+}
+
+.consultation-form .form-group {
+  margin-bottom: 12px !important;
+}
+
+.consultation-form label {
+  display: block !important;
+  margin-bottom: 4px !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  color: #495057 !important;
+}
+
+.consultation-form input,
+.consultation-form textarea {
+  width: 100% !important;
+  padding: 8px 12px !important;
+  border: 1px solid #ced4da !important;
+  border-radius: 4px !important;
+  font-size: 14px !important;
+  font-family: inherit !important;
+}
+
+.consultation-form input:focus,
+.consultation-form textarea:focus {
+  outline: none !important;
+  border-color: #007cba !important;
+  box-shadow: 0 0 0 2px rgba(0, 124, 186, 0.1) !important;
+}
+
+.consultation-form button {
+  background: #007cba !important;
+  color: white !important;
+  border: none !important;
+  padding: 8px 16px !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  font-size: 14px !important;
+  transition: background 0.2s ease !important;
+}
+
+.consultation-form button:hover {
+  background: #005a8b !important;
+}
+
+.consultation-form button:disabled {
+  background: #6c757d !important;
+  cursor: not-allowed !important;
+}
+
+/* Кнопка допомоги для форм */
+.webflow-help-button {
+  background: #007cba !important;
+  color: white !important;
+  border: none !important;
+  padding: 8px 16px !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  font-size: 12px !important;
+  margin-top: 10px !important;
+  transition: background 0.2s ease !important;
+}
+
+.webflow-help-button:hover {
+  background: #005a8b !important;
+}
+
+/* Стилі для інтерактивних запитань */
+.interactive-question {
+  background: #f8f9fa !important;
+  border: 1px solid #e9ecef !important;
+  border-radius: 8px !important;
+  padding: 16px !important;
+  margin: 8px 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.interactive-question p {
+  margin: 0 0 12px 0 !important;
+  font-weight: 600 !important;
+  color: #495057 !important;
+  font-size: 14px !important;
+  line-height: 1.4 !important;
+}
+
+.question-options {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+  width: 100% !important;
+}
+
+.option-btn {
+  background: #ffffff !important;
+  border: 1px solid #dee2e6 !important;
+  border-radius: 6px !important;
+  padding: 12px 16px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  text-align: left !important;
+  font-size: 14px !important;
+  color: #495057 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  font-family: inherit !important;
+  line-height: 1.4 !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+}
+
+.option-btn:hover {
+  background: #e9ecef !important;
+  border-color: #adb5bd !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.option-btn:active {
+  background: #dee2e6 !important;
+  transform: translateY(0) !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+}
+
+.option-btn:focus {
+  outline: none !important;
+  border-color: #007bff !important;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25) !important;
+}
+
+/* Додаткові стилі для забезпечення правильного відображення */
+.message-text .interactive-question {
+  margin: 0 !important;
+  padding: 16px !important;
+}
+
+.message-text .question-options {
+  margin: 0 !important;
+}
+
+.message-text .option-btn {
+  margin: 0 !important;
+  display: block !important;
+}
+
+/* Стилі для повідомлень з інтерактивними елементами */
+.message.bot .message-text {
+  padding: 0 !important;
+}
+
+.message.bot .message-text .interactive-question {
+  background: #f8f9fa !important;
+  border: 1px solid #e9ecef !important;
+  border-radius: 8px !important;
+}
+
+/* Стилі для результатів пошуку */
+.search-results {
+  margin: 12px 0 !important;
+}
+
+.search-results h4 {
+  margin: 0 0 16px 0 !important;
+  color: #495057 !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+}
+
+.products-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+  gap: 16px !important;
+  margin: 16px 0 !important;
+}
+
+.product-card {
+  background: #ffffff !important;
+  border: 1px solid #e9ecef !important;
+  border-radius: 8px !important;
+  padding: 16px !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.product-card:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+.product-image {
+  position: relative !important;
+  margin-bottom: 12px !important;
+  text-align: center !important;
+}
+
+.product-image img {
+  max-width: 100% !important;
+  height: 120px !important;
+  object-fit: contain !important;
+  border-radius: 4px !important;
+}
+
+.product-rating {
+  position: absolute !important;
+  top: 8px !important;
+  right: 8px !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  padding: 4px 8px !important;
+  border-radius: 12px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+}
+
+.product-name {
+  margin: 0 0 8px 0 !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: #212529 !important;
+  line-height: 1.3 !important;
+}
+
+.product-description {
+  margin: 0 0 8px 0 !important;
+  font-size: 14px !important;
+  color: #6c757d !important;
+  line-height: 1.4 !important;
+}
+
+.product-characteristics {
+  margin: 8px 0 !important;
+  font-size: 12px !important;
+  color: #6c757d !important;
+}
+
+.characteristic-item {
+  display: inline-block !important;
+  margin-right: 8px !important;
+  margin-bottom: 4px !important;
+}
+
+.product-price {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #dc3545 !important;
+  margin: 8px 0 !important;
+}
+
+.product-actions {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-top: 12px !important;
+}
+
+.product-link {
+  background: #007bff !important;
+  color: white !important;
+  text-decoration: none !important;
+  padding: 8px 16px !important;
+  border-radius: 4px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  transition: background 0.2s ease !important;
+}
+
+.product-link:hover {
+  background: #0056b3 !important;
+  color: white !important;
+}
+
+.product-save-btn {
+  background: none !important;
+  border: 1px solid #dee2e6 !important;
+  border-radius: 50% !important;
+  width: 36px !important;
+  height: 36px !important;
+  cursor: pointer !important;
+  font-size: 16px !important;
+  transition: all 0.2s ease !important;
+}
+
+.product-save-btn:hover {
+  background: #f8f9fa !important;
+  border-color: #adb5bd !important;
+}
+
+/* Мобільні стилі для інтерактивних запитань */
+@media (max-width: 767px) {
+  .interactive-question {
+    padding: 12px !important;
+    margin: 6px 0 !important;
+  }
+
+  .interactive-question p {
+    font-size: 13px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .question-options {
+    gap: 6px !important;
+  }
+
+  .option-btn {
+    padding: 10px 12px !important;
+    font-size: 13px !important;
+    border-radius: 4px !important;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .product-card {
+    padding: 12px !important;
+  }
+
+  .product-name {
+    font-size: 14px !important;
+  }
+
+  .product-description {
+    font-size: 13px !important;
+  }
+
+  .product-price {
+    font-size: 16px !important;
+  }
+
+  .product-actions {
+    flex-direction: column !important;
+    gap: 8px !important;
+    align-items: stretch !important;
+  }
+
+  .product-link {
+    text-align: center !important;
+    padding: 10px 16px !important;
+  }
+
+  .product-save-btn {
+    align-self: center !important;
+  }
+}
+
+/* Стилі для сучасних карточок товарів */
+.products-container-modern {
+  margin-top: 12px !important;
+}
+
+.products-grid-modern {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)) !important;
+  gap: 16px !important;
+  margin-top: 12px !important;
+}
+
+.product-card-modern {
+  background: #ffffff !important;
+  border: 1px solid #e9ecef !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+  position: relative !important;
+}
+
+.product-card-modern:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12) !important;
+  transform: translateY(-2px) !important;
+}
+
+.product-card-link {
+  text-decoration: none !important;
+  color: inherit !important;
+  display: block !important;
+}
+
+.product-image-wrapper {
+  position: relative !important;
+  width: 100% !important;
+  padding-top: 75% !important;
+  background: #f8f9fa !important;
+  overflow: hidden !important;
+}
+
+.product-image-modern {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  padding: 12px !important;
+  transition: transform 0.3s ease !important;
+}
+
+.product-card-modern:hover .product-image-modern {
+  transform: scale(1.05) !important;
+}
+
+.product-discount-badge {
+  position: absolute !important;
+  top: 8px !important;
+  right: 8px !important;
+  background: #dc3545 !important;
+  color: #ffffff !important;
+  padding: 4px 8px !important;
+  border-radius: 12px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  z-index: 10 !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+}
+
+.product-content {
+  padding: 12px !important;
+}
+
+.product-title {
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  color: #212529 !important;
+  margin: 0 0 12px 0 !important;
+  line-height: 1.4 !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  min-height: 36px !important;
+}
+
+.product-price-wrapper {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+}
+
+.product-old-price {
+  font-size: 12px !important;
+  color: #6c757d !important;
+  text-decoration: line-through !important;
+  font-weight: 400 !important;
+}
+
+.product-price-modern {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #212529 !important;
+  line-height: 1.2 !important;
+}
+
+/* Мобільні стилі для карточок */
+@media (max-width: 767px) {
+  .products-grid-modern {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  .product-content {
+    padding: 10px !important;
+  }
+
+  .product-title {
+    font-size: 12px !important;
+    min-height: 32px !important;
+  }
+
+  .product-price-modern {
+    font-size: 16px !important;
+  }
+
+  .product-old-price {
+    font-size: 11px !important;
+  }
+
+  .product-discount-badge {
+    font-size: 11px !important;
+    padding: 3px 6px !important;
+  }
+}
